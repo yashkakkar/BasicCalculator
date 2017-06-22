@@ -9,7 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.mariuszgromada.math.mxparser.*;
-
+/*
+@project-name: BasicCalculator
+@author: yash kakkar
+ */
 public class MainActivity extends AppCompatActivity {
     private EditText numberOperation;
     private TextView result;
@@ -173,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 // perform operation and send the result back to text view
                 String expression = numberOperation.getText().toString();
                Expression e = new Expression(expression);
-                if(Double.toString(e.calculate()) =="NaN"){
+                if(Double.toString(e.calculate()).equals("NaN")){
                     Toast.makeText(MainActivity.this,R.string.error_in_expression,Toast.LENGTH_SHORT).show();
                     result.setText("Error!");
                 }else {
