@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="error_in_expression">Opps! Error In Expression!</string>
+    <string name="cleared">All Clear!</string>
+</resources>
