@@ -9,50 +9,50 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.mariuszgromada.math.mxparser.*;
-/*
-@project-name: BasicCalculator
-@author: yash kakkar
+
+/**
+ * Created by Yash Kakkar on 27-11-2016.
  */
 public class MainActivity extends AppCompatActivity {
     private EditText numberOperation;
     private TextView result;
-    private float tempResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ReplaceFont.replaceDefaultFont(this,"DEFAULT","Quicksand-Regular.ttf");
-        numberOperation = (EditText)findViewById(R.id.numberOperation);
+        ReplaceFont.replaceDefaultFont(this, "DEFAULT", "Quicksand-Regular.ttf");
+        numberOperation = (EditText) findViewById(R.id.numberOperation);
         numberOperation.setTypeface(FontCache.getTypeface(MainActivity.this, "Quicksand-Regular.ttf"));
-        result = (TextView)findViewById(R.id.result);
+        result = (TextView) findViewById(R.id.result);
 
-        Button button0 = (Button)findViewById(R.id.btn0);
-        Button button1 = (Button)findViewById(R.id.btn1);
-        Button button2 = (Button)findViewById(R.id.btn2);
-        Button button3 = (Button)findViewById(R.id.btn3);
-        Button button4 = (Button)findViewById(R.id.btn4);
-        Button button5 = (Button)findViewById(R.id.btn5);
-        Button button6 = (Button)findViewById(R.id.btn6);
-        Button button7 = (Button)findViewById(R.id.btn7);
-        Button button8 = (Button)findViewById(R.id.btn8);
-        Button button9 = (Button)findViewById(R.id.btn9);
-        Button buttonClose = (Button)findViewById(R.id.close);
-        Button buttonDecimal = (Button)findViewById(R.id.btnDecimal);
-        Button buttonSigned = (Button)findViewById(R.id.btnSigned);
+        Button button0 = (Button) findViewById(R.id.btn0);
+        Button button1 = (Button) findViewById(R.id.btn1);
+        Button button2 = (Button) findViewById(R.id.btn2);
+        Button button3 = (Button) findViewById(R.id.btn3);
+        Button button4 = (Button) findViewById(R.id.btn4);
+        Button button5 = (Button) findViewById(R.id.btn5);
+        Button button6 = (Button) findViewById(R.id.btn6);
+        Button button7 = (Button) findViewById(R.id.btn7);
+        Button button8 = (Button) findViewById(R.id.btn8);
+        Button button9 = (Button) findViewById(R.id.btn9);
+        Button buttonClose = (Button) findViewById(R.id.close);
+        Button buttonDecimal = (Button) findViewById(R.id.btnDecimal);
+        Button buttonSigned = (Button) findViewById(R.id.btnSigned);
         // Operation buttons
-        Button buttonDivide = (Button)findViewById(R.id.btnDivide);
-        Button buttonMultiply = (Button)findViewById(R.id.btnMultiply);
-        Button buttonPlus = (Button)findViewById(R.id.btnPlus);
-        Button buttonMinus = (Button)findViewById(R.id.btnMinus);
-        Button buttonPercent = (Button)findViewById(R.id.btnPercent);
+        Button buttonDivide = (Button) findViewById(R.id.btnDivide);
+        Button buttonMultiply = (Button) findViewById(R.id.btnMultiply);
+        Button buttonPlus = (Button) findViewById(R.id.btnPlus);
+        Button buttonMinus = (Button) findViewById(R.id.btnMinus);
+        Button buttonPercent = (Button) findViewById(R.id.btnPercent);
         //other buttons
         Button buttonPower = (Button) findViewById(R.id.btnPower);
-        Button buttonLeftBracket = (Button)findViewById(R.id.btnLeftBracket);
-        Button buttonRightBracket = (Button)findViewById(R.id.btnRightBracket);
-        Button buttonDelete = (Button)findViewById(R.id.btnDelete);
-        Button buttonClear = (Button)findViewById(R.id.btnClear);
-        Button buttonAC = (Button)findViewById(R.id.btnAc);
-        Button buttonEqualTo = (Button)findViewById(R.id.equal_to);
+        Button buttonLeftBracket = (Button) findViewById(R.id.btnLeftBracket);
+        Button buttonRightBracket = (Button) findViewById(R.id.btnRightBracket);
+        Button buttonDelete = (Button) findViewById(R.id.btnDelete);
+        Button buttonClear = (Button) findViewById(R.id.btnClear);
+        Button buttonAC = (Button) findViewById(R.id.btnAc);
+        Button buttonEqualTo = (Button) findViewById(R.id.equal_to);
         //Set Button Font style
         buttonClose.setTypeface(FontCache.getTypeface(MainActivity.this, "Quicksand-Regular.ttf"));
         button0.setTypeface(FontCache.getTypeface(MainActivity.this, "Quicksand-Regular.ttf"));
@@ -111,10 +111,9 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener allClear = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Button b =(Button) view;
                 numberOperation.setText("");
                 result.setText("");
-                Toast.makeText(MainActivity.this,R.string.cleared,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.cleared, Toast.LENGTH_SHORT).show();
             }
         };
         buttonAC.setOnClickListener(allClear);
@@ -122,9 +121,8 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener clearText = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Button b =(Button) view;
                 result.setText("");
-                Toast.makeText(MainActivity.this,R.string.cleared,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.cleared, Toast.LENGTH_SHORT).show();
             }
         };
         buttonClear.setOnClickListener(clearText);
@@ -132,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener deleteText = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(numberOperation.getText().toString().trim().length() > 0) {
-                    String result = numberOperation.getText().toString().substring(0,numberOperation.getText().toString().length() - 1);
+                if (numberOperation.getText().toString().trim().length() > 0) {
+                    String result = numberOperation.getText().toString().substring(0, numberOperation.getText().toString().length() - 1);
                     numberOperation.setText(result);
                     numberOperation.setSelection(result.length());
                 }
@@ -143,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener operationListner = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Button b = (Button) view;
-               numberOperation.append(b.getText().toString());
+                Button b = (Button) view;
+                numberOperation.append(b.getText().toString());
 
             }
         };
@@ -161,13 +159,12 @@ public class MainActivity extends AppCompatActivity {
         buttonPercent.setOnClickListener(operationListner);
         buttonPower.setOnClickListener(operationListner);
 
-    /* bracket first open then close, check for open close bracket
-        buttonLeftBracket.setOnClickListener(bracketListner);
-        buttonRightBracket.setOnClickListener(bracketListner);
-*/
-    // signed should be applied to current number & decimal should be only for one time
-      //  buttonSigned.setOnClickListener(numberSignedListner);
-
+        /* bracket first open then close, check for open close bracket
+           buttonLeftBracket.setOnClickListener(bracketListner);
+           buttonRightBracket.setOnClickListener(bracketListner);
+        */
+        // signed should be applied to current number & decimal should be only for one time
+        // buttonSigned.setOnClickListener(numberSignedListner);
 
 
         View.OnClickListener equalToListener = new View.OnClickListener() {
@@ -175,16 +172,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // perform operation and send the result back to text view
                 String expression = numberOperation.getText().toString();
-               Expression e = new Expression(expression);
-                if(Double.toString(e.calculate()).equals("NaN")){
-                    Toast.makeText(MainActivity.this,R.string.error_in_expression,Toast.LENGTH_SHORT).show();
-                    result.setText("Error!");
-                }else {
-               result.setText(Double.toString(e.calculate()));
+                Expression e = new Expression(expression);
+                if (Double.toString(e.calculate()).equals("NaN")) {
+                    Toast.makeText(MainActivity.this, R.string.error_in_expression, Toast.LENGTH_SHORT).show();
+                    result.setText(R.string.error);
+                } else {
+                    String res = String.valueOf(e.calculate());
+                    result.setText(res);
                 }
             }
         };
-    buttonEqualTo.setOnClickListener(equalToListener);
+        buttonEqualTo.setOnClickListener(equalToListener);
 
     }
 }

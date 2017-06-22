@@ -13,7 +13,6 @@ public class ReplaceFont {
     public static void replaceDefaultFont(Context context, String  nameOfFontBeingReplaced, String nameOfTheFontInAssets){
         Typeface customFontTypeface = Typeface.createFromAsset(context.getAssets(), nameOfTheFontInAssets);
         replaceFont(nameOfFontBeingReplaced,customFontTypeface);
-
     }
     public static void replaceFont(String nameOfFontBeingReplaced, Typeface customFontTypeFace){
         try {
